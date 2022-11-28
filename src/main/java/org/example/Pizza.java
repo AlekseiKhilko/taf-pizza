@@ -1,5 +1,6 @@
 package org.example;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.gen5.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -83,7 +86,11 @@ public class Pizza {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
         //Маргарита30
-        System.out.println(element.getText());
+        //System.out.println(element.getText());
+        String expectedString = element.getText();
+
+        assertEquals(expectedString, "Маргарита30");
+
         return this;
     }
 
