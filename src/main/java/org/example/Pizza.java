@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.gen5.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
