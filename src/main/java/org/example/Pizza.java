@@ -7,28 +7,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Pizza {
 
     public WebDriver driver;
 
-    /*
-    Задание (обязательное)
-1. Зайти на домашнюю страницу сайта. https://express-pizza.by/
-2. В разделе Пицца(-ы) добавить в Корзину пиццу Маргарита (или Четыре сезона) любого размера.
-3. Перейти в Корзину.
-4. Проверить, что пицца Маргарита (или Четыре (4) сезона) есть в заказе.
-*если для выполнения заказа необходимы дополнительные данные, то ваше усмотрение
-     */
-
     public Pizza startdriver(){
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
 
         return this;
+    }
+
+    public void closeDriver(){
+        driver.close();
     }
 
     public Pizza openMainPage(){
@@ -38,28 +37,35 @@ public class Pizza {
         return this;
     }
 
-    public Pizza clickPizza(){
-        final String xPath = "//a[@href='/picca']";
+    public Pizza clickPizza() throws InterruptedException {
+        final String xPath = "//a[@href='/picca']/img";
         WebElement element = driver.findElement(By.xpath(xPath));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500)", "");
 
+        Thread.sleep(1000);
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().build().perform();
+/*
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.release().perform();
 
-        js.executeScript("arguments[0].scrollIntoView();", element);
-
-        element.click();
+        Thread.sleep(4000);
+*/
+        //element.click();
         return this;
     }
 
     public Pizza clickBuy(){
-        final String xPath = "//h3[text()='Маргарита']/..//button";
-        WebElement element = driver.findElement(By.xpath(xPath));
+        //final String xPath = "//h3[text()='Маргарита']/..//button";
+        final String xPath = "//div[@id='edit-actions--48']";
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
         Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        element.click();
+        actions.moveToElement(element).click().build().perform();
+
+        //System.out.println(element.getText());
+
         return this;
     }
 
@@ -74,18 +80,11 @@ public class Pizza {
 
     public Pizza checkPizza(){
         final String xPath = "//form[@action='/cart/checkout']//a[contains(text(), 'Маргарита')]";
-        WebElement element = driver.findElement(By.xpath(xPath));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+        //Маргарита30
         System.out.println(element.getText());
         return this;
     }
 
-    /*
-    // a[@href="/picca"]
-    // //h3[text()='Маргарита']/..//button
-    // a[@href="/cart/checkout"]
-    // //form[@action='/cart/checkout']//a[contains(text(), 'Маргарита')]
-
-     */
 }

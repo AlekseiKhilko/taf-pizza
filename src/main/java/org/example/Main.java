@@ -1,15 +1,16 @@
 package org.example;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //System.out.println("Hello world!");
         Pizza pizza = new Pizza();
         pizza.startdriver()
                 .openMainPage()
-                .clickPizza()
+                //.clickPizza()
                 .clickBuy()
                 .clickCart()
-                .clickCart();
+                .clickCart()
+                .checkPizza();
         //pizza.openMainPage();
     }
 }
