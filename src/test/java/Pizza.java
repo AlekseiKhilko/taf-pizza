@@ -12,14 +12,13 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Pizza {
-
     public WebDriver driver;
 
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public Pizza openPage(){
-        WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
 
         final String URL = "https://express-pizza.by/";
         this.driver.get(URL);
