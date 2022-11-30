@@ -30,10 +30,6 @@ public class Pizza {
         return this;
     }
 
-    public void closeDriver(){
-        driver.close();
-    }
-
     public Pizza clickPizza() throws InterruptedException {
         final String xPath = "//a[@href='/picca']/img";
         WebElement element = driver.findElement(By.xpath(xPath));
