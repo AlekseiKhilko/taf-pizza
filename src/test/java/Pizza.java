@@ -34,7 +34,7 @@ public class Pizza {
         final String xPath = "//a[@href='/picca']/img";
         WebElement element = driver.findElement(By.xpath(xPath));
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
