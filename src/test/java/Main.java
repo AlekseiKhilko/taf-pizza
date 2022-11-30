@@ -3,8 +3,7 @@ import org.openqa.selenium.WebDriver;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        StartDriver startDriver = new StartDriver();
-        WebDriver driver = startDriver.start();
+        WebDriver driver = StartDriver.get();
 
         Pizza pizza = new Pizza();
         pizza.setDriver(driver);
@@ -12,5 +11,7 @@ public class Main {
                 .clickBuy()
                 .clickCart()
                 .checkPizza();
+
+        StartDriver.close(pizza.getDriver());
     }
 }

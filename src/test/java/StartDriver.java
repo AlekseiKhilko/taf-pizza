@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class StartDriver {
-    public WebDriver start(){
+    static public WebDriver get(){
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -14,7 +14,7 @@ public class StartDriver {
         return driver;
     }
 
-    public void close(WebDriver driver){
+    static public void close(WebDriver driver){
         driver.close();
     }
 }

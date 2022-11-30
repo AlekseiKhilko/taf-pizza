@@ -18,6 +18,10 @@ public class Pizza {
         this.driver = driver;
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     public Pizza openPage(){
 
         final String URL = "https://express-pizza.by/";
@@ -66,6 +70,7 @@ public class Pizza {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
         String expectedString = element.getText();
+        System.out.println(expectedString);
         assertEquals(expectedString, "Маргарита30");
 
         return this;
