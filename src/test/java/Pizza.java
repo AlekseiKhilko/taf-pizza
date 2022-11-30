@@ -62,7 +62,7 @@ public class Pizza {
     }
 
     public Pizza checkPizza(){
-        final String xPath = "//form[@id='uc-cart-view-form']//a[contains(text(), 'Маргарита')]";
+        final String xPath = "//td[@class='desc']/a[contains(text(), 'Маргарита')]";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
         String expectedString = element.getText();
