@@ -1,8 +1,4 @@
-package org.example;
-
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,14 +43,7 @@ public class Pizza {
 
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
-/*
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.release().perform();
 
-        Thread.sleep(4000);
-*/
-        //element.click();
         return this;
     }
 
