@@ -3,7 +3,6 @@ public class Main {
         //System.out.println("Hello world!");
         Pizza pizza = new Pizza();
         pizza.startdriver()
-                .openMainPage()
                 //.clickPizza()
                 .clickBuy()
                 .clickCart()

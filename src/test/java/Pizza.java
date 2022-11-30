@@ -21,18 +21,14 @@ public class Pizza {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
+        final String URL = "https://express-pizza.by/";
+        this.driver.get(URL);
+
         return this;
     }
 
     public void closeDriver(){
         driver.close();
-    }
-
-    public Pizza openMainPage(){
-        final String URL = "https://express-pizza.by/";
-        this.driver.get(URL);
-
-        return this;
     }
 
     public Pizza clickPizza() throws InterruptedException {
