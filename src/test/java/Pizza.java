@@ -44,6 +44,7 @@ public class Pizza {
         final String xPath = "//div[@id='edit-actions--48']";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
 
@@ -51,11 +52,13 @@ public class Pizza {
     }
 
     public Pizza clickCart(){
-        final String xPath = "//a[@href=\"/cart/checkout\"]";
-        WebElement element = driver.findElement(By.xpath(xPath));
+        final String xPath = "//li/a[@href='/cart/checkout']";
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+
         Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        element.click();
+        actions.moveToElement(element).click().build().perform();
+
         return this;
     }
 
