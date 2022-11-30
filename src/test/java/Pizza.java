@@ -15,7 +15,7 @@ public class Pizza {
 
     public WebDriver driver;
 
-    public Pizza startdriver(){
+    public Pizza openPage(){
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
