@@ -39,14 +39,11 @@ public class Pizza {
         return this;
     }
 
-    public Pizza clickBuy(){
+    public Pizza clickBuyPizza(){
         //final String xPath = "//h3[text()='Маргарита']/..//button";
         final String xPath = "//div[@id='edit-actions--48']";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
-
-        //Actions actions = new Actions(driver);
-        //actions.moveToElement(element).click().build().perform();
         element.click();
 
         return this;

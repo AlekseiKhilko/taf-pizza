@@ -8,7 +8,7 @@ public class Main {
         Pizza pizza = new Pizza();
         pizza.setDriver(driver);
         pizza.openPage()
-                .clickBuy()
+                .clickBuyPizza()
                 .clickCart()
                 .checkPizza();
 
