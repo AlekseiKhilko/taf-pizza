@@ -45,19 +45,18 @@ public class Pizza {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
 
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().build().perform();
+        //Actions actions = new Actions(driver);
+        //actions.moveToElement(element).click().build().perform();
+        element.click();
 
         return this;
     }
 
     public Pizza clickCart(){
-        final String xPath = "//li/a[@href='/cart/checkout']";
+        final String xPath = "//li[@class='cart-block-checkout']/a[@href='/cart/checkout']";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
-
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().build().perform();
+        element.click();
 
         return this;
     }
