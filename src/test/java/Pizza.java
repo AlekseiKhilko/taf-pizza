@@ -33,9 +33,6 @@ public class Pizza {
     public Pizza clickPizza() throws InterruptedException {
         final String xPath = "//a[@href='/picca']/img";
         WebElement element = driver.findElement(By.xpath(xPath));
-
-        //Thread.sleep(1000);
-
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
 
@@ -49,8 +46,6 @@ public class Pizza {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
-
-        //System.out.println(element.getText());
 
         return this;
     }
@@ -68,10 +63,7 @@ public class Pizza {
         final String xPath = "//form[@action='/cart/checkout']//a[contains(text(), 'Маргарита')]";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
-        //Маргарита30
-        //System.out.println(element.getText());
         String expectedString = element.getText();
-
         assertEquals(expectedString, "Маргарита30");
 
         return this;
