@@ -4,7 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class StartDriver {
+public class BrowserDriver {
     static public WebDriver get(){
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
